@@ -23,7 +23,7 @@ public class BasicInfoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String page = getForwardPage(req);
+        String page = getForwardPage(req.getServletPath());
         // todo 2. Populate the text from .properties files localization
         RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(page);
         dispatcher.forward(req, resp);
@@ -34,8 +34,7 @@ public class BasicInfoServlet extends HttpServlet {
         this.doGet(req, resp);
     }
 
-    private String getForwardPage(HttpServletRequest req) {
-        String path = req.getServletPath();
+    private String getForwardPage(String path) {
         if("/about".equals(path)) return ABOUT_PAGE;
         else if("/contact".equals(path)) return CONTACT_PAGE;
         else return HOME_PAGE;
