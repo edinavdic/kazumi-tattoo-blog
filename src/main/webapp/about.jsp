@@ -19,24 +19,24 @@
 </head>
 <body>
 <div id="header">
-    <a href="index.html" class="logo">
+    <a href="home" class="logo">
         <img src="images/logo.jpg" alt="">
     </a>
     <ul id="navigation">
         <li>
-            <a href="index.html">home</a>
+            <a href="home">home</a>
         </li>
         <li class="selected">
-            <a href="about.html">about</a>
+            <a href="about">about</a>
         </li>
         <li>
-            <a href="gallery.html">gallery</a>
+            <a href="gallery">gallery</a>
         </li>
         <li>
-            <a href="blog.html">blog</a>
+            <a href="blog">blog</a>
         </li>
         <li>
-            <a href="contact.html">contact</a>
+            <a href="contact">contact</a>
         </li>
     </ul>
 </div>
