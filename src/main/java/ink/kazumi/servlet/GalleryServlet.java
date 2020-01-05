@@ -1,5 +1,8 @@
 package ink.kazumi.servlet;
 
+import ink.kazumi.service.GalleryService;
+import ink.kazumi.service.InstagramGalleryService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,19 +24,15 @@ public class GalleryServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String page = getForwardPage();
         // todo 2. Populate the text from .properties files localization
-        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(page);
+        GalleryService service = InstagramGalleryService.getInstance();
+        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(GALLERY_PAGE);
         dispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doGet(req, resp);
-    }
-
-    private String getForwardPage() {
-        return GALLERY_PAGE;
     }
 
     @Override

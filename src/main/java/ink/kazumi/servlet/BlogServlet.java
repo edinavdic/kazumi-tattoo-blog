@@ -21,19 +21,14 @@ public class BlogServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String page = getForwardPage();
         // todo 2. Populate the text from .properties files localization
-        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(page);
+        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(BLOG_PAGE);
         dispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doGet(req, resp);
-    }
-
-    private String getForwardPage() {
-        return BLOG_PAGE;
     }
 
     @Override
