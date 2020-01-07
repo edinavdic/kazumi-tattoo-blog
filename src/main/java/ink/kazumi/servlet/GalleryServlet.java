@@ -26,13 +26,17 @@ public class GalleryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // todo 2. Populate the text from .properties files localization
         GalleryService service = InstagramGalleryService.getInstance();
-        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(GALLERY_PAGE);
-        dispatcher.forward(req, resp);
+        forwardToJsp(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.doGet(req, resp);
+    }
+
+    private void forwardToJsp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(GALLERY_PAGE);
+        dispatcher.forward(req, resp);
     }
 
     @Override

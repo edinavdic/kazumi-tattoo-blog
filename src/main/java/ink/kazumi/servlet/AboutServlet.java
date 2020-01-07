@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/blog")
-public class BlogServlet extends HttpServlet {
+@WebServlet("/about")
+public class AboutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private static final String BLOG_PAGE = "/blog.jsp";
+    private static final String ABOUT_PAGE = "/about.jsp";
 
     @Override
     public void init() throws ServletException {
@@ -31,7 +31,7 @@ public class BlogServlet extends HttpServlet {
     }
 
     private void forwardToJsp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(BLOG_PAGE);
+        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(ABOUT_PAGE);
         dispatcher.forward(req, resp);
     }
 

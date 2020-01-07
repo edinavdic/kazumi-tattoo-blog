@@ -8,13 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet({ "/home", "/about", "/contact" })
-public class BasicInfoServlet extends HttpServlet {
+@WebServlet("/home")
+public class HomeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private static final String HOME_PAGE = "/home.jsp";
-    private static final String ABOUT_PAGE = "/about.jsp";
-    private static final String CONTACT_PAGE = "/contact.jsp";
 
     @Override
     public void init() throws ServletException {
@@ -24,9 +22,7 @@ public class BasicInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // todo 2. Populate the text from .properties files localization
-        String page = getForwardPage(req.getServletPath());
-        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(page);
-        dispatcher.forward(req, resp);
+        forwardToJsp(req, resp);
     }
 
     @Override
@@ -34,10 +30,9 @@ public class BasicInfoServlet extends HttpServlet {
         this.doGet(req, resp);
     }
 
-    private String getForwardPage(String path) {
-        if("/about".equals(path)) return ABOUT_PAGE;
-        else if("/contact".equals(path)) return CONTACT_PAGE;
-        else return HOME_PAGE;
+    private void forwardToJsp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(HOME_PAGE);
+        dispatcher.forward(req, resp);
     }
 
     @Override
